@@ -31,21 +31,23 @@ try:
 			# print response.content
 			# retrieve the json file
 			data_raw = response.json()
-			# nanme the file with the access time
+			# name the file with the access time
 			filename = 'data_%s.json' %(
 				dt.datetime.now().strftime('%y_%m_%d_%H_%M_%S'))
-			# load the old json file
-			with open(filename, 'r') as fr:
-				jload = json.load(fr)
-			# append the new data to the old json file
-			jload.update(data_raw)
-			# write the new content into the json file
-			with open(filename, 'w') as fw:
-				jwrite = json.dump(data_raw, fw)
-			# rest for 30 seconds
-			time.sleep(30)
-			# notify the new start
-			print 'Start again'
+			while True:
+				# load the old json file
+				with open(filename, 'r') as fr:
+					jload = json.load(fr)
+				# append the new data to the old json file
+				jload.update(data_raw)
+				# write the new content into the json file
+				with open(filename, 'w') as fw:
+					jwrite = json.dump(data_raw, fw)
+				# rest for 30 seconds
+				time.sleep(30)
+				# notify the new start
+				print 'Start again'
+			time.sleep(60*60)
 
 except KeyboardInterrupt:
 	print 'interrupted!'
