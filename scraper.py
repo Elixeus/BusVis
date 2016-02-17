@@ -11,6 +11,10 @@ It scrapes the data every five minutes and zip it every hour.
 sys.argv[1]: the api key of the user.
 '''
 
+'''
+Start working on the one hour zipper
+'''
+
 # if __name__ == '__main__':
 try:
 	while True:
