@@ -11,7 +11,7 @@ It scrapes the data every five minutes and zip it every hour.
 sys.argv[1]: the api key of the user.
 '''
 
-
+# if __name__ == '__main__':
 try:
 	while True:
 			url = 'http://api.prod.obanyc.com/api/siri/vehicle-monitoring.json'
@@ -22,6 +22,8 @@ try:
 			response = requests.get(url, params)
 			# check if the url works
 			response.raise_for_status()
+
+			print response.content
 			# retrieve the json file
 			data_raw = response.json()
 			# nanme the file with the access time
