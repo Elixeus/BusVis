@@ -21,8 +21,8 @@ if __name__ == '__main__':
 	url = ('http://api.prod.obanyc.com/api/siri/'
 					   'vehicle-monitoring.json')
 	params = {'key':sys.argv[1], # input api key as an sys argv
-				  'version':1, # choose the version of the api, choose 2 here
-				  'VehicleMonitoringDetailLevel': ''} # nothing here
+			  'version':1, # choose the version of the api, choose 2 here
+			  'VehicleMonitoringDetailLevel': ''} # nothing here
 	try:
 		while True:
 			sts = dt.datetime.now()
@@ -46,13 +46,11 @@ if __name__ == '__main__':
 			except IOError:
 				with open(filename, 'w') as fw:
 					jwrite = json.dump(data_raw, fw)
-			# compare the time delta
-			time.sleep(30)
-			# update the sts if the time delta is larger than 1 hour
-			if (sts - sts_init) >= dt.timedelta(seconds = 3600):
-				sts_init = sts
-			else:
-				pass
-
+			finally:
+				time.sleep(30)
+				sts = dt.datetime.now()
+				# update the sts if the time delta is larger than 1 hour
+				if (sts - sts_init) >= dt.timedelta(seconds = 3600):
+					sts_init = sts
 	except KeyboardInterrupt:
 		print 'interrupted!'
