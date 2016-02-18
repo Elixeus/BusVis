@@ -36,16 +36,18 @@ if __name__ == '__main__':
 			filename = 'data_%s.json' %(sts_init.strftime('%y_%m_%d_%H_%M_%S'))
 			try:
 				# load the old json file
-				with open(filename, 'wr') as fr:
+				with open(filename, 'r') as fr:
 					jload = json.load(fr)
-				# append the new data to the old json file
-				jload.update(data_raw)
+					# append the new data to the old json file
+					jload.update(data_raw)
+				# write the new content into the json file
+				with open(filename, 'w') as fw:
+					jwrite = json.dump(data_raw, fw)
+					jwrite(fw)
 			except IOError:
 				with open(filename, 'w') as fw:
 					jwrite = json.dump(data_raw, fw)
-			# write the new content into the json file
-			with open(filename, 'w') as fw:
-				jwrite = json.dump(data_raw, fw)
+					jwrite(fw)
 			# compare the time delta
 			time.sleep(30)
 			# update the sts if the time delta is larger than 1 hour
