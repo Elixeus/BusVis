@@ -23,8 +23,8 @@ if __name__ == '__main__':
 	params = {'key':sys.argv[1], # input api key as an sys argv
 				  'version':1, # choose the version of the api, choose 2 here
 				  'VehicleMonitoringDetailLevel': ''} # nothing here
-	while True:
-		try:
+	try:
+		while True:
 			sts = dt.datetime.now()
 			# use the requests module to pull down the data
 			response = requests.get(url, params)
@@ -49,8 +49,10 @@ if __name__ == '__main__':
 			# compare the time delta
 			time.sleep(30)
 			# update the sts if the time delta is larger than 1 hour
-			if (sts - sts_init) >= dt.time(1,0,0):
+			if (sts - sts_init) >= dt.timedelta(seconds = 3600):
 				sts_init = sts
+			else:
+				pass
 
-		except KeyboardInterrupt:
-			print 'interrupted!'
+	except KeyboardInterrupt:
+		print 'interrupted!'
