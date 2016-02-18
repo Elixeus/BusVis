@@ -42,12 +42,10 @@ if __name__ == '__main__':
 					jload.update(data_raw)
 				# write the new content into the json file
 				with open(filename, 'w') as fw:
-					jwrite = json.dump(data_raw, fw)
-					jwrite(fw)
+					json.dump(data_raw, fw)
 			except IOError:
 				with open(filename, 'w') as fw:
 					jwrite = json.dump(data_raw, fw)
-					jwrite(fw)
 			# compare the time delta
 			time.sleep(30)
 			# update the sts if the time delta is larger than 1 hour
