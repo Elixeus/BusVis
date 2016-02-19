@@ -5,17 +5,15 @@ import datetime as dt
 import time
 
 '''
-This script is for scraping data from the MTA.
-It scrapes the data every five minutes and zip it every hour.
+This script can be used to scrape real-time bus data feed from the MTA.
+It pulls the data every 30 seconds, save it to the local file,
+prints an empty space. After every hour, the local file is zipped,
+and a new file is created to hold the data again. This way we can avoid
+having data with very large volume.
 
-sys.argv[1]: the api key of the user.
+The program takes 1 system argument: sys.argv[1] -- the API key from MTA.
 '''
 
-'''
-pull down the data every 30 seconds,
-append the data to the existing file,
-print an empty line,
-'''
 if __name__ == '__main__':
 	# record the start time stamp
 	sts_init = dt.datetime.now()
@@ -29,18 +27,21 @@ if __name__ == '__main__':
 			sts = dt.datetime.now()
 			# use the requests module to pull down the data
 			response = requests.get(url, params)
-			# check if the url works
-			response.raise_for_status()
-			# retrieve the json file
 			try:
+				# sanity check
+				response.raise_for_status()
+				# retrieve the json file
 				data_raw = response.json()
+			except requests.exceptions.RequestException:
+				print 'an error occurred!'
+				time.sleep(30)
 			# name the file with the access time
 			filename = 'BusData_%s.json' %(sts_init.strftime(
 						'%y_%m_%d_%H_%M_%S'))
 			# deal
 			fw = open(filename, 'a')
 			json.dump(data_raw, fw)
-			json.dump('\n', fw)
+			json.dump(' ', fw)
 			fw.close()
 			print 'data dumped'
 			time.sleep(30)
