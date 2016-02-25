@@ -53,17 +53,13 @@ if __name__ == '__main__':
 			if (sts - sts_init) >= dt.timedelta(seconds = 3600):
 				# zip the file
 				inf = open(filename, "rb")
-				outf = gzip.open("file.txt.gz", "wb")
+				outf = gzip.open(filename +'.gz', "wb")
 				outf.write(inf.read())
 				outf.close()
 				inf.close()
 				# update the initial timestamp
 				sts_init = sts
-				inf = open(filename, "rb")
-				outf = gzip.open(filename +'.gz', "wb")
-				outf.write(inf.read())
-				outf.close()
-				inf.close()
+
 					
 				
 	except KeyboardInterrupt:
