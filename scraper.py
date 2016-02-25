@@ -3,6 +3,7 @@ import json
 import requests
 import datetime as dt
 import time
+import gzip
 
 '''
 This script can be used to scrape real-time bus data feed from the MTA.
@@ -26,7 +27,7 @@ if __name__ == '__main__':
 			  'VehicleMonitoringDetailLevel': ''} # nothing here
 	try:
 		while True:
-			sts = dt.datetime.now()
+			sts = dt.datetime.now() # sts: status timestamp
 			# use the requests module to pull down the data
 			response = requests.get(url, params)
 			try:
@@ -50,6 +51,20 @@ if __name__ == '__main__':
 			sts = dt.datetime.now()
 			# update the sts if the time delta is larger than 1 hour
 			if (sts - sts_init) >= dt.timedelta(seconds = 3600):
+				# zip the file
+				inf = open(filename, "rb")
+				outf = gzip.open("file.txt.gz", "wb")
+				outf.write(inf.read())
+				outf.close()
+				inf.close()
+				# update the initial timestamp
 				sts_init = sts
+				inf = open(filename, "rb")
+				outf = gzip.open(filename +'.gz', "wb")
+				outf.write(inf.read())
+				outf.close()
+				inf.close()
+					
+				
 	except KeyboardInterrupt:
 		print 'interrupted!'
