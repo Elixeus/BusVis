@@ -12,6 +12,8 @@ and a new file is created to hold the data again. This way we can avoid
 having data with very large volume.
 
 The program takes 1 system argument: sys.argv[1] -- the API key from MTA.
+
+TODO: 1. add zipper; 2. add expection handling; 3. write a unit test
 '''
 
 if __name__ == '__main__':
@@ -41,7 +43,7 @@ if __name__ == '__main__':
 			# deal
 			fw = open(filename, 'a')
 			json.dump(data_raw, fw)
-			json.dump(' ', fw)
+			json.dump('\n', fw)
 			fw.close()
 			print 'data dumped'
 			time.sleep(30)
