@@ -35,11 +35,11 @@ if __name__ == '__main__':
 				response.raise_for_status()
 				# retrieve the json file
 				data_raw = response.json()
-			except requests.exceptions.RequestException:
-				print 'an error occurred!'
+			except requests.exceptions.RequestException, e:
+				print 'an error occured! (1)' + str(e.reason)
 				time.sleep(30)
 			# name the file with the access time
-			filename = 'BusData_%s.json' %(sts_init.strftime(
+			filename = 'BusData_%s.txt' %(sts_init.strftime(
 						'%y_%m_%d_%H_%M_%S'))
 			# deal
 			fw = open(filename, 'a')
