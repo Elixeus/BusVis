@@ -1,6 +1,6 @@
 # BusVis
 This is a continuation of the CUSP BusVis Project
-The data is acquired from the [MTA Bus Time API]('http://bustime.mta.info/wiki/Developers/Index){:target='_blank'}.
+The data is acquired from the [MTA Bus Time API]('http://bustime.mta.info/wiki/Developers/Index){target='_blank'}.
 
 The repo includes:
 - script for MTA data scraping
