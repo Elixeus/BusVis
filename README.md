@@ -12,3 +12,6 @@ TODO list:
 - [x] refine zipper
 - [ ] study and apply the HTTP exception handling better
 - [ ] test on a server and identify bugs
+
+# License
+This work is licensed un a [Creative Common Attribution-ShareAlike 3.0 Unported License]('http://creativecommons.org/licenses/by-sa/3.0/').
