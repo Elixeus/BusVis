@@ -10,4 +10,5 @@ TODO list:
 - [x] create a scrapper scratch
 - [x] refine timer
 - [x] refine zipper
+- [ ] study and apply the HTTP exception handling better
 - [ ] test on a server and identify bugs
