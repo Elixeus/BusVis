@@ -8,6 +8,6 @@ The repo includes:
 TODO list:
 - [x] create repo and REAMME.MD
 - [x] create a scrapper scratch
-- [ ] refine timer
-- [ ] refine zipper
+- [x] refine timer
+- [x] refine zipper
 - [ ] test on a server and identify bugs
