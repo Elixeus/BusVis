@@ -6,8 +6,7 @@ import time
 def Scraper(url, params, filename):
     fw = open(filename, 'a')
     try:
-        response = requests.get(url=url, params=params,
-                                timeout=(0.001, 10))
+        response = requests.get(url, params, timeout=(0.001, 10))
     except requests.exceptions.ConnectionError as e:  # connection error
         print e
         fw.write('/n')
