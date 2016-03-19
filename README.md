@@ -14,4 +14,4 @@ TODO list:
 - [ ] test on a server and identify bugs
 
 # License
-This work is licensed un a [Creative Common Attribution-ShareAlike 3.0 Unported License]('http://creativecommons.org/licenses/by-sa/3.0/').
+This work is licensed un a [Creative Common Attribution-ShareAlike 3.0 Unported License](http://creativecommons.org/licenses/by-sa/3.0/).
