@@ -3,12 +3,12 @@ import json
 import time
 
 
-def Scraper(url, params, filename):
+def Scraper(filename, url, params=None):
     '''
     Scraper is a generic function that can be used to scrape data from any API.
+    filename: create a file on the harddrive where the data can be stored.
     url: the url of the API.
     params: the parameters required by the API e.g. API KEY, consumer secret...
-    filename: create a file on the harddrive where the data can be stored.
     '''
     fw = open(filename, 'a')
     '''

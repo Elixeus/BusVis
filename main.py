@@ -17,7 +17,9 @@ if __name__ == '__main__':
             ts = dt.datetime.now()
             filename = 'MTABusData_%s.txt' % (ts.strftime(
                 '%y_%m_%d_%H_%M_%S'))
-            Scraper(url, params, filename)  # where scraping happens
+            Scraper(filename=filename,
+                    url=url,
+                    params=params)  # where scraping happens
             time.sleep(30)
             ts_one = dt.datetime.now()
             if (ts_one - ts) >= dt.timedelta(s=3600):
