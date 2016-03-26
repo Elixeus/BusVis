@@ -16,7 +16,7 @@ def Scraper(filename, url, params=None):
     TODO: 1. study these failures more carefully 2. tweak the timeout range
     '''
     try:
-        response = requests.get(url, params, timeout=(0.001, 10))
+        response = requests.get(url, params, timeout=(0.1, 10))
     except requests.exceptions.ConnectionError as e:  # connection error
         print e
         fw.write('/n')
